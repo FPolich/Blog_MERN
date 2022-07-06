@@ -1,11 +1,12 @@
 import './App.css';
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import {BrowserRouter, Routes, Route, Switch } from 'react-router-dom';
 
 //Pages
 import Home from './pages/Home';
 import Article from './pages/Article';
 import ArticleList from './pages/ArticlesList';
 import About from './pages/About';
+import NotFound from './pages/NotFound';
 
 //Components 
 import NavBar from "./components/NavBar";
@@ -16,13 +17,15 @@ function App() {
         <BrowserRouter>
         <NavBar />
         <div className="max-w-screen-md mx-auto pt-20">
-          <h1>Hello, React Router!</h1>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/articles-list" element={<ArticleList />} />
-            <Route path="/article" element={<Article />} />
-          </Routes>
+          <Switch>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/articles-list" element={<ArticleList />} />
+              <Route path="/article/:name" element={<Article />} />
+              <Route component={NotFound}/>
+            </Routes>
+          </Switch>
         </div>
       </BrowserRouter>
   );
