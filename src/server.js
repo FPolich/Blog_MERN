@@ -3,18 +3,6 @@ const bodyParser = require("body-parser");
 const { MongoClient } = require('mongodb');
 const app = express();
 
-// const articlesInfo = {
-//     'learn-react': {
-//         comments: [],
-//     },
-//     "learn-node": {
-//         comments: [],
-//     },
-//     "my-thoughts": {
-//         comments: [],
-//     },
-// };
-
 app.use(bodyParser.json());
 
 const withDB = async(operations, res) => {
